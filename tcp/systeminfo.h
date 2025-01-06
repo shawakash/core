@@ -156,24 +156,34 @@ class SystemInfo {
                                 ProcessInfo proc;
                                 proc.pid = stoi(pid);
 
+                                // Get process name
                                 proc.name = readProcessFile(pid, "comm");
+
+                                // Get command line
                                 proc.cmdline = readProcessFile(pid, "cmdline");
                                 replace(proc.cmdline.begin(), proc.cmdline.end(), '\0', ' ');
 
+                                // Get CPU usage
                                 proc.cpu_usage = getProcessCPUUsage(pid);
+
+                                // Get memory usage
                                 string statm = readProcessFile(pid, "statm");
                                 stringstream ss(statm);
                                 long pages;
                                 ss >> pages;
                                 proc.memory_usage = pages * sysconf(_SC_PAGESIZE) / 1024 / 1024; // Convert to MB
 
+                                // Get process state
                                 string stat = readProcessFile(pid, "stat");
                                 size_t pos = stat.find(')');
                                 if (pos != string::npos && stat.length() > pos + 2) {
                                     proc.state = stat[pos + 2];
                                 }
+
+                                // Get user (owner)
                                 struct stat st;
-                                if (stat(("/proc/" + pid + "/stat").c_str(), &st) == 0) {
+                                string path = "/proc/" + pid + "/stat";
+                                if (::stat(path.c_str(), &st) == 0) {
                                     struct passwd *pw = getpwuid(st.st_uid);
                                     if (pw != nullptr) {
                                         proc.user = pw->pw_name;
@@ -186,8 +196,10 @@ class SystemInfo {
                     }
                     closedir(dir);
 
+                    // Sort processes by CPU usage
                     sort(processes.begin(), processes.end());
 
+                    // Print header with formatting
                     ss << setw(7) << "PID"
                        << setw(20) << "NAME"
                        << setw(10) << "CPU%"
@@ -197,6 +209,7 @@ class SystemInfo {
                        << "  COMMAND\n";
                     ss << string(100, '-') << "\n";
 
+                    // Print top n processes
                     for (size_t i = 0; i < min(size_t(n), processes.size()); ++i) {
                         const auto& proc = processes[i];
                         ss << setw(7) << proc.pid
