@@ -1,4 +1,12 @@
-# Market Making System Implementation Tasks
+# Core Infra System Implementation Tasks
+
+## Week 0: Network Protocols
+
+### Task 0: Implementing TCP Sockets
+- [ ] Create a TCP server
+  - [ ] Implement a simple echo server
+  - [ ] Add connection handling
+  - [ ] Implement message parsing
 
 ## Week 1: Core Infrastructure
 
@@ -8,7 +16,7 @@
   - [ ] Add sequence numbers (uint32_t)
   - [ ] Implement memory-aligned structs
 - [ ] Create serialization/deserialization
-  - [ ] Implement memcpy based serialization 
+  - [ ] Implement memcpy based serialization
   - [ ] Add byte order handling
   - [ ] Add CRC32 checksums
 - [ ] Testing & Validation
