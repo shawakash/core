@@ -3,10 +3,11 @@
 ## Week 0: Network Protocols
 
 ### Task 0: Implementing TCP Sockets
-- [ ] Create a TCP server
-  - [ ] Implement a simple echo server
-  - [ ] Add connection handling
-  - [ ] Implement message parsing
+- [x] Create a TCP server
+  - [x] Implement a simple echo server
+  - [x] Add connection handling
+  - [x] Implement message parsing
+  - [x] use it to get something of the server like system info
 
 ## Week 1: Core Infrastructure
 
