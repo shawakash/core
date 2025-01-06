@@ -21,7 +21,7 @@ int TCPStream::getPeerPort() {
     return m_peerPort;
 }
 
-ssize_t TCPStream::send(char* buffer, ssize_t len) {
+ssize_t TCPStream::send(const char* buffer, ssize_t len) {
     return write(m_sd, buffer, len);
 }
 

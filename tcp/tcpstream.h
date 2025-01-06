@@ -16,7 +16,7 @@ class TCPStream {
 
         ~TCPStream();
 
-        ssize_t send(char* buffer, ssize_t len);
+        ssize_t send(const char* buffer, ssize_t len);
         ssize_t receive(char* buffer, ssize_t len);
 
         string getPeerIP();
