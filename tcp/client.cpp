@@ -9,16 +9,32 @@ using namespace std;
 using namespace std::chrono;
 
 void measureLatency(TCPStream* stream, const string& message) {
-    char line[256];
+    char line[1048576];
     int len;
 
     auto start = high_resolution_clock::now();
 
-    stream->send(message.c_str(), message.size());
+    // Send message
+    ssize_t sent = stream->send(message.c_str(), message.size());
+    if (sent <= 0) {
+        printf("Error sending message\n");
+        return;
+    }
     printf("sent - %s\n", message.c_str());
 
-    len = stream->receive(line, sizeof(line));
-    line[len] = '\0';
+    string response;
+    while ((len = stream->receive(line, sizeof(line))) > 0) {
+        line[len] = '\0';
+        response += line;
+
+        // Check if we've received the complete response
+        if (len < sizeof(line)) break;
+    }
+
+    if (len < 0) {
+        printf("Error receiving response\n");
+        return;
+    }
 
     auto end = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(end - start);
@@ -38,7 +54,7 @@ int main(int argc, char** argv) {
     TCPStream* stream = connector->connect(atoi(argv[1]), argv[2]);
 
     if(stream) {
-        measureLatency(stream, "Hello from client😊");
+        measureLatency(stream, "10");
         delete stream;
     }
 
