@@ -33,7 +33,13 @@
   - [ ] Add data validation
   - [ ] Calculate statistics
 
-## Week 1: Core Infrastructure
+## Week 1: Design Patterns
+
+### Task 1: Patterns
+- [ ] Learn and Implement the different Patterns
+  - [ ] Strategy Pattern
+
+## Week 2: Core Infrastructure
 
 ### Task 1: Binary Protocol Development
 - [ ] Implement message structures with proper alignment
@@ -77,6 +83,33 @@
   - [ ] Implement monitoring
   - [ ] Add configuration system
 
+## Week 3: Network Integration
+
+### Task 5: Network Layer
+- [ ] TCP Implementation
+  - [ ] Build boost::asio client
+  - [ ] Add connection management
+  - [ ] Implement reconnection
+- [ ] Multicast Support
+  - [ ] Add multicast handler
+  - [ ] Implement message reassembly
+  - [ ] Add gap detection
+- [ ] Connection Management
+  - [ ] Add heartbeat mechanism
+  - [ ] Implement failover
+  - [ ] Add connection monitoring
+
+### Task 6: System Integration
+- [ ] Message Routing
+  -Implementation
+  - [ ] Create price level map/RB-tree
+  - [ ] Implement best bid/ask tracking
+  - [ ] Add bulk update capabilities
+- [ ] Order Management
+  - [ ] Add order creation/modification
+  - [ ] Implement order cancellation
+  - [ ] Add state validation
+
 ## Week 4: Performance Optimization
 
 ### Task 7: Low Latency Tuning
@@ -108,50 +141,3 @@
   - [ ] Add quote updates
   - [ ] Implement cancel/replace
   - [ ] Add monitoring points
-
-## Week 3: Network Integration
-
-### Task 5: Network Layer
-- [ ] TCP Implementation
-  - [ ] Build boost::asio client
-  - [ ] Add connection management
-  - [ ] Implement reconnection
-- [ ] Multicast Support
-  - [ ] Add multicast handler
-  - [ ] Implement message reassembly
-  - [ ] Add gap detection
-- [ ] Connection Management
-  - [ ] Add heartbeat mechanism
-  - [ ] Implement failover
-  - [ ] Add connection monitoring
-
-### Task 6: System Integration
-- [ ] Message Routing
-  -Implementation
-  - [ ] Create price level map/RB-tree
-  - [ ] Implement best bid/ask tracking
-  - [ ] Add bulk update capabilities
-- [ ] Order Management
-  - [ ] Add order creation/modification
-  - [ ] Implement order cancellation
-  - [ ] Add state validation
-
-## Week 2: Market Data Processing
-
-### Task 3: Feed Handler
-- [ ] Queue Implementation
-  - [ ] Build lock-free queue
-  - [ ] Add sequence gap detection
-  - [ ] Implement recovery logic
-- [ ] Message Parser
-  - [ ] Create zero-copy parser
-  - [ ] Implement memory pools
-  - [ ] Add buffer management
-- [ ] Recovery Mechanism
-  - [ ] Add snapshot capability
-  - [ ] Implement state recovery
-  - [ ] Add disconnect handling
-
-### Task 4: Market Making Logic
-- [ ] Strategy Implementation
-  - [ ] Basic market ma
