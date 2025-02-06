@@ -23,13 +23,16 @@ add_executable(strategy
     src/strategy.cpp
 )
 
-add_executable(http
+add_executable(observer
     src/http.cpp
+    src/http.hpp
+    src/config.cpp
+    src/observer.cpp
 )
 
 # Find CURL
 find_package(CURL REQUIRED)
-target_link_libraries(http
+target_link_libraries(observer
     PRIVATE CURL::libcurl
     PRIVATE nlohmann_json::nlohmann_json
 )
