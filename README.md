@@ -37,7 +37,8 @@
 
 ### Task 1: Patterns
 - [ ] Learn and Implement the different Patterns
-  - [ ] Strategy Pattern
+  - [x] Strategy Pattern
+  - [ ] Observer Pattern
 
 ## Week 2: Core Infrastructure
 
