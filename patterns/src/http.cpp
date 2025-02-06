@@ -121,37 +121,3 @@ HttpResponse HttpClient::fetch(const std::string& url, const HttpRequestOptions&
 
     return response;
 }
-
-
-int main() {
-    try {
-        HttpClient client;
-
-        // GET request
-        HttpResponse response = client.fetch("https://jsonplaceholder.typicode.com/todos/1");
-        std::cout << "Status: " << response.statusCode << std::endl;
-        std::cout << "Body: " << response.body << std::endl;
-
-        // POST request with custom options
-        HttpRequestOptions options;
-        options.method = HttpMethod::POST;
-        options.headers = {
-            {"Accept", "application/json; charset=UTF-8"}
-        };
-        options.body = {
-            {"title", "foo"},
-            {"body", "bar"},
-            {"userId", 1}
-        };
-
-        response = client.fetch("https://jsonplaceholder.typicode.com/posts", options);
-        std::cout << "Status: " << response.statusCode << std::endl;
-        std::cout << "Body: " << response.body << std::endl;
-
-    } catch (const std::exception& e) {
-        std::cerr << "Error: " << e.what() << std::endl;
-        return 1;
-    }
-
-    return 0;
-}
