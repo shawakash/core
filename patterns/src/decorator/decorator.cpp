@@ -55,7 +55,9 @@ class LatencyDecorator : public ExchangeDecorator {
         std::ofstream logFile;
 
     public:
-        LatencyDecorator(IExchange* exchange) : ExchangeDecorator(exchange) {}
+        LatencyDecorator(IExchange* exchange) : ExchangeDecorator(exchange) {
+            logFile.open("exchange_logs.txt", std::ios::app);
+        }
 
         BBO getBBO(Token base, Token quote) override {
             auto start = std::chrono::high_resolution_clock::now();
@@ -69,6 +71,10 @@ class LatencyDecorator : public ExchangeDecorator {
                     << duration.count() << "ms" << std::endl;
 
             return bbo;
+        }
+
+        ~LatencyDecorator() {
+            logFile.close();
         }
 };
 
@@ -105,7 +111,7 @@ class ArbLogDecorator {
                         << " at " << arb.sellBBO.bid.price << std::endl;
             std::cout << "Amount: " << arb.amount << std::endl;
             std::cout << "Spread: " << (arb.sellBBO.bid.price - arb.buyBBO.ask.price) << std::endl
-            << " Profit: " << arb.profit << " %" << std::endl;
+            << "Profit: " << arb.profit << " %" << std::endl;
             std::cout << "==============================\n" << std::endl;
         }
 
