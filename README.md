@@ -39,6 +39,15 @@
 - [ ] Learn and Implement the different Patterns
   - [x] Strategy Pattern
   - [x] Observer Pattern
+  - [x] Decorator Pattern
+
+### Task 2: Cex Arbitrage Bot
+- [ ] Implement a simple arbitrage bot
+  - [x] Connect to multiple exchanges
+  - [x] Implement order book tracking
+  - [x] Implement arbitrage opportunities detection
+  - [ ] Add trade execution logic
+  - [ ] Implement risk management
 
 ## Week 2: Core Infrastructure
 
