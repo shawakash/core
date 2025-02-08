@@ -1,5 +1,5 @@
-#include "http.hpp"
-#include "config.cpp"
+#include "../utils/http.hpp"
+#include "../config.cpp"
 #include <cstdlib>
 #include <exception>
 #include <iostream>

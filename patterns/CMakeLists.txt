@@ -20,14 +20,14 @@ FetchContent_MakeAvailable(json)
 
 # Add executable
 add_executable(strategy
-    src/strategy.cpp
+    src/strategy/strategy.cpp
 )
 
 add_executable(observer
-    src/http.cpp
-    src/http.hpp
+    src/utils/http.cpp
+    src/utils/http.hpp
     src/config.cpp
-    src/observer.cpp
+    src/observer/observer.cpp
 )
 
 # Find CURL
